@@ -1,0 +1,38 @@
+.roomForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.roomForm .roomForm_room {
+  display: flex;
+  width: 8rem;
+  flex-direction: column;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.roomForm .roomForm_room .roomForm_room-label {
+  background-color: lightgray;
+}
+
+.roomForm .roomForm_disabled {
+  background-color: lightgray;
+}
+
+.roomForm .roomForm_room .roomForm_room_option {
+  display: flex;
+  width: 5rem;
+  flex-direction: row;
+}
+
+.roomForm .roomForm_room .roomForm_room_option select {
+  width: 2.5rem;
+}
+
+.roomForm .padL {
+  padding-left: 0.5rem;
+}

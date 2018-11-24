@@ -1,0 +1,142 @@
+body {
+  background: url(./background.png) no-repeat;
+  background-size: 110%;
+  background-position: center -335px;
+}
+
+body{
+  font-family: Helvetica, Arial, Sans-Serif;
+  margin: 0px;
+}
+
+header {
+  height: 43px;
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #474747;
+}
+
+header h4 {
+  margin-top: 14px;
+  margin-bottom: 0px;
+  position: absolute;
+}
+
+header .header_back-button {
+  display: inline;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 9.3px;
+  margin-top: 10.4px;
+  background:linear-gradient(#2b2b2b, #000000);
+  border: 1px solid #474747;
+  border-radius: 4px;
+}
+
+header .header_icon {
+  height: 17px;
+  position: fixed;
+  top: 13px;
+  right: 14px;
+}
+
+article {
+  margin-top: 21px;
+  width: 100%;
+}
+
+article strong {
+  margin-bottom: 4.5px;
+}
+
+article img:first-child {
+  max-width: 92.8vw;
+  margin-left: 1.2rem;
+  margin-bottom: 13.5px;
+  border: 3px solid white;
+}
+
+@media (max-width:605px) {
+  article img:first-child {
+    max-height: 142px;
+    width: 273px;
+  }
+}
+
+article * {
+  margin-left: 1.2rem;
+}
+
+footer {
+  width: 100%;
+  margin-top: 22px;
+}
+
+@media (min-height: 481px) {
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+footer .footer_spacer {
+  height: 11px;
+  background: linear-gradient(white, #c4d0dc);
+  margin-left: 1.2rem;
+  margin-right: 1.3rem;
+  border-top: 1px solid #cbcbcb;
+}
+
+footer .footer_menuItem {
+  background: linear-gradient(white, #c4d0dc);
+  height: 2.7rem;
+  margin-left: 1.2rem;
+  margin-right: 1.3rem;
+  border-top: 1px solid #cbcbcb;
+  border-bottom: 1px solid #eeeeee;
+  text-align: left;
+  line-height: 3;
+  color: #001325;
+}
+
+footer .footer_menuTop {
+  border-top: 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 2.69rem;
+}
+
+footer .footer_leftIndent {
+  margin-left: 17px;
+}
+
+footer .footer_floatRighIndent {
+  right: 2rem;
+  position: absolute;
+}
+
+.address {
+  font-size: 0.907rem;
+  color: lightblue;
+  margin-bottom: 4px;
+}
+
+.block {
+  display: block;
+}
+
+.large-text {
+  font-size: large;
+}
+
+.white-text {
+  color: white;
+}
+
+.center-text {
+  width: 100%;
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}

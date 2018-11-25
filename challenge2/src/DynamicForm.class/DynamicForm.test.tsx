@@ -5,11 +5,6 @@ import DynamicForm, { formState, formProps } from './DynamicForm.class';
 import Enzyme, { mount, ReactWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-// testing interfaces
-interface store {
-  [key: string] :string | null
-}
-
 Enzyme.configure({ adapter: new Adapter() });
 
 describe(

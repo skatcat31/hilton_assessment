@@ -261,10 +261,5 @@ describe(
 
     });
 
-    const oldLocalStorageSet = window.localStorage.setItem;
-    window.localStorage.setItem = jest.fn();
-
-    window.localStorage.setItem = oldLocalStorageSet;
-
   }
 )

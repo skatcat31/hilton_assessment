@@ -29,6 +29,11 @@ describe(
       };
       mountedAPP = undefined;
     });
+
+    it('exposes a state helper to get a default state and construct it with a number of rooms', () => {
+      expect(DynamicForm.formState).toBeInstanceOf(Function);
+      expect(DynamicForm.length).toBe(1);
+    })
     
     it('always renders a form', () => {
       expect(APP().find('form').length).toBe(1);

@@ -78,6 +78,21 @@ It is after all better to be able to read your HTML and not have to trudge throu
 
 This does however mean a Div is still present as that `div` is an actual `division` of logic that I decided on to make a spacer.
 
+## Feedback
+
+After the interview there was some feedback discussed about the Static Page Assessment and is as follows:
+
+1. The image should resize dynamically  
+This was a misunderstanding as it is meant to not take up more than a certain amount of height until a certain threshold is passed so as to prevent unnessisary scrolling by the client. This could have been better documented in the README
+
+2. There was an H4 tag closed with an H3 tag  
+This was an error from a find and replace macro that was supposed to change the H3 to an H4, however it missed the closing tag. This is something my IDE(VSCode) does not support(highlighting of mismatched tags in pure HTML documents). This could probably be fixed by a plugin. I'll have to look for one.
+
+3. The modification to the logo to achieve a proper logo was appreciated
+
+4. The Arrow Fonts were actually images in Photoshop, it just so happens that they are almost 1:1 pixel perfect to Font Awesome's arrows  
+A fun discovery
+
 ## Hilton Properties and Licenses
 
 Hilton provided assets list:

@@ -2,9 +2,6 @@ body {
   background: url(./background.png) no-repeat;
   background-size: 110%;
   background-position: center -335px;
-}
-
-body{
   font-family: Helvetica, Arial, Sans-Serif;
   margin: 0px;
 }

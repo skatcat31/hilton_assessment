@@ -29,6 +29,11 @@ describe(
       };
       mountedAPP = undefined;
     });
+
+    it('exposes a state helper to get a default state and construct it with a number of rooms', () => {
+      expect(DynamicForm.formState).toBeInstanceOf(Function);
+      expect(DynamicForm.length).toBe(1);
+    })
     
     it('always renders a form', () => {
       expect(APP().find('form').length).toBe(1);
@@ -58,7 +63,7 @@ describe(
           }
         }));
         props.rooms = 2;
-        expect(APP().state('rooms').room1.toggle).toBe(false);
+        expect(JSON.stringify(APP().state())).toBe(window.localStorage.getItem('DynamicForm.state'));
         window.localStorage.clear();
       });
 
@@ -67,7 +72,7 @@ describe(
         props.rooms = 2;
         let consolerror = console.error;
         console.error = jest.fn();
-        expect(APP().state('rooms').room1.toggle).toBe(true);
+        expect(JSON.stringify(APP().state())).toBe(JSON.stringify(DynamicForm.formState(2)));
         window.localStorage.clear();
         console.error = consolerror;
       });
@@ -103,8 +108,7 @@ describe(
           }
         }));
         props.rooms = 2;
-        const rooms = APP().state('rooms');
-        expect(rooms.room0 != null && rooms.room1 != null && rooms.room4 == null).toBe(true);
+        expect(JSON.stringify(APP().state())).toBe(JSON.stringify(DynamicForm.formState(2)));
         window.localStorage.clear();
       });
 
@@ -120,8 +124,7 @@ describe(
           }
         }));
         props.rooms = 1;
-        const rooms = APP().state('rooms');
-        expect(rooms.room0 != null && rooms.room4 == null).toBe(true);
+        expect(JSON.stringify(APP().state())).toBe(JSON.stringify(DynamicForm.formState(1)));
         window.localStorage.clear();
       });
 
@@ -158,20 +161,20 @@ describe(
       describe('The checkboxes', () =>{
         it('does not let you change the `Room 1` checkbox even if you enable it or manually fire a change event', () => {
           APP().find({ type: 'checkbox' }).first().simulate('change', { target: {checked : false}});
-          expect(APP().state('rooms').room0.selected).toBe(true);
+          expect(APP().find({ type: 'checkbox' }).first().prop('checked')).toBe(true);
         });
 
         it('updates state when you click on a checkbox other tham `Room 1`', () => {
           APP().find({ type: 'checkbox' }).last().simulate('change', { target: {checked : true}});
-          expect(APP().state('rooms').room3.selected).toBe(true);
+          expect(APP().find({ type: 'checkbox' }).last().prop('checked')).toBe(true);
         });
   
         it('selects the room if you click on the checkbox for the room and will set any lower rooms selected as well', () => {
           APP().find({ type: 'checkbox' }).at(2).simulate('change', { target: {checked : true}});
           expect(
-            APP().state('rooms').room3.selected == false &&
-            APP().state('rooms').room2.selected == true &&
-            APP().state('rooms').room1.selected == true
+            APP().find({ type: 'checkbox' }).last().prop('checked') == false &&
+            APP().find({ type: 'checkbox' }).at(2).prop('checked') == true &&
+            APP().find({ type: 'checkbox' }).at(1).prop('checked') == true
             ).toBe(true);
         });
 
@@ -179,9 +182,9 @@ describe(
           APP().find({ type: 'checkbox' }).last().simulate('change', { target: {checked : true}});
           APP().find({ type: 'checkbox' }).at(1).simulate('change', { target: {checked : false}});
           expect(
-            APP().state('rooms').room3.selected == false &&
-            APP().state('rooms').room2.selected == false &&
-            APP().state('rooms').room1.selected == false
+            APP().find({ type: 'checkbox' }).last().prop('checked') == false &&
+            APP().find({ type: 'checkbox' }).at(2).prop('checked') == false &&
+            APP().find({ type: 'checkbox' }).at(1).prop('checked') == false
             ).toBe(true);
         });
       });

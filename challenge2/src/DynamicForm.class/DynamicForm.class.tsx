@@ -10,9 +10,7 @@ export interface formProps {
 
 // interface for the state typing and default four rooms
 export interface formState {
-  rooms: {
-    [roomID: string]: roomState
-  }
+  rooms: rooms
 }
 
 // interface for setting up a room using the basicRoom helper
@@ -28,6 +26,10 @@ export interface roomState {
   children: number,
   selected: boolean,
   toggle: boolean
+}
+
+export interface rooms {
+  [key: string]: roomState;
 }
 
 // private helper to easily and reapetably setup rooms in the state
@@ -46,37 +48,10 @@ class DynamicForm extends Component<formProps, formState>  {
     const passedNumberOfRooms = props.rooms;
     // either use the stored state in local storage, or use a new formState
     let state;
-    try {
-      state = JSON.parse(window.localStorage.getItem('DynamicForm.state') || 'false');
-    } catch (error) {
-      console.error('DynamicForm could not parse what was saved as state');
-      console.error(error.message);
-      state = false;
-    }
-    let roomNotFound: boolean = false;
-    let i: number = 0;
-    let numberOfLoadedRooms: number = 0;
-    if (!state || !state.rooms) {
-      roomNotFound = true;
-    } else {
-      numberOfLoadedRooms = Object.keys(state.rooms).length;
-      if (numberOfLoadedRooms != passedNumberOfRooms) {
-        roomNotFound = true;
-      } else {
-        for (i = 0; i < numberOfLoadedRooms; i++) {
-          roomNotFound = roomNotFound || state.rooms[`room${i}`] === undefined;
-        }
-      }
-    }
+    state = DynamicForm.loadState();
     // if there is no state saved, or the numberOfRooms is different from the state
-    if (roomNotFound) {
-      const rooms: { [key: string]: roomState } = {};
-      i = 0;
-      while (i < passedNumberOfRooms) {
-        rooms[`room${i}`] = basicRoom({ selected: i == 0 ? true : false, toggle: i == 0 ? false : true });
-        i++;
-      }
-      state = { rooms };
+    if (!DynamicForm.validateState(state, passedNumberOfRooms)) {
+      state = DynamicForm.formState(passedNumberOfRooms);
     }
     this.state = state;
 
@@ -84,6 +59,45 @@ class DynamicForm extends Component<formProps, formState>  {
     this.toggleRoom = this.toggleRoom.bind(this);
     this.submit = this.submit.bind(this);
     this.render = this.render.bind(this);
+  }
+
+  static formState(passedNumberOfRooms: number) :formState{
+    const rooms: rooms = {};
+    let i = 0;
+    while (i < passedNumberOfRooms) {
+      rooms[`room${i}`] = basicRoom({ selected: i == 0 ? true : false, toggle: i == 0 ? false : true });
+      i++;
+    }
+    return { rooms };
+  }
+
+  static validateState(state: formState, passedNumberOfRooms: number) {
+    if (!state || !state.rooms) {
+      return false;
+    }
+    else {
+      let numberOfLoadedRooms = Object.keys(state.rooms).length;
+      if (numberOfLoadedRooms != passedNumberOfRooms) {
+        return false;
+      }
+      else {
+        for (let i = 0; i < numberOfLoadedRooms; i++) {
+          if (state.rooms[`room${i}`] === undefined) return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  static loadState() :formState {
+    try {
+      return JSON.parse(window.localStorage.getItem('DynamicForm.state') || 'false');
+    }
+    catch (error) {
+      console.error('DynamicForm could not parse what was saved as state');
+      console.error(error.message);
+      return DynamicForm.formState(0);
+    }
   }
 
   updatePeople(roomID: string, key: 'adults' | 'children'): React.EventHandler<React.ChangeEvent<HTMLSelectElement>> {

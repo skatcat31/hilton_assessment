@@ -68,6 +68,7 @@ At 33 lines this is a valid concern and instead this logic should have been in a
 
 3. Some of the tests directly interacted with State. While many of the tests were good, why did these ones interact with the state instead of focusing on the DOM?  
 Because the DOM should be decided from the State I thought it would be a good place to test the mirroring that DOM updates State correctly, however this strictly ties the State into the test and if implimentation changes would quickly break that test. This would normally lead to an issue and then Pull Request to update the test. It is extremely helpful critique of how little things in testing can sometimes go unnoticed.
+**Removed relience on checking state in [#13](https://github.com/skatcat31/hilton_assessment/pull/13)**
 
 ## Running the application
 

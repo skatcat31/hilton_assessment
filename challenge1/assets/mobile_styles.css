@@ -71,12 +71,17 @@ article * {
 footer {
   width: 100%;
   margin-top: 22px;
-  position: absolute;
-  bottom: 0;
+}
+
+@media (min-height: 481px){
+  footer {
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 footer .footer_spacer {
-  height: 11px;
+  height: 12px;
   background: linear-gradient(white, #c4d0dc);
   margin-left: 1.2rem;
   margin-right: 1.3rem;

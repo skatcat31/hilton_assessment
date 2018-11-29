@@ -70,11 +70,13 @@ There are some points in time where a logical division is needed. In that case y
 
 This implimentation only uses 1!(As the spacing div on the footer)
 
-### GOTCHA!
+### CAPTCHA
 
 There used to be 4 `div`s instead of 1. I used them because I wanted to make certain that my code example was actually read. This was meant to be brought up in the feedback and questions for the interviewers. It was and as such the real styles I would use(calculated widths) are now being uploaded with the `button` semantic HTML.
 
 It is after all better to be able to read your HTML and not have to trudge through it.
+
+This does however mean a Div is still present as that `div` is an actual `division` of logic that I decided on to make a spacer.
 
 ## Hilton Properties and Licenses
 

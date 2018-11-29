@@ -88,6 +88,7 @@ This was a misunderstanding as it is meant to not take up more than a certain am
 
 2. There was an H4 tag closed with an H3 tag  
 This was an error from a find and replace macro that was supposed to change the H3 to an H4, however it missed the closing tag. This is something my IDE(VSCode) does not support(highlighting of mismatched tags in pure HTML documents). This could probably be fixed by a plugin. I'll have to look for one.
+**UPDATED: All tags are now properly closed!**
 
 3. The modification to the logo to achieve a proper logo was appreciated
 

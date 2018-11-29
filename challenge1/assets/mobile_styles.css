@@ -87,6 +87,7 @@ footer .footer_spacer {
 }
 
 footer .footer_menuItem {
+  border: 0px;
   background: linear-gradient(white, #c4d0dc);
   height: 2.7rem;
   margin-left: 1.2rem;
@@ -96,6 +97,7 @@ footer .footer_menuItem {
   text-align: left;
   line-height: 3;
   color: #001325;
+  width: calc(100% - 2.5rem);
 }
 
 footer .footer_menuTop {

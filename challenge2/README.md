@@ -64,7 +64,7 @@ If a component is not mounted the life cycle event never fires(same with compone
 
 2. The constructor is somewhat long. The logic to confirm and build the state could have been moved out of the constructor  
 At 33 lines this is a valid concern and instead this logic should have been in a helper function that could have been expose so that other modules could confirm the state as well. This would normally lead to an issue and then Pull Request. It would have been a good example of a Static Method on the class, same with a default state building method.  
-Implimented with https://github.com/skatcat31/hilton_assessment/pull/6
+**Implimented with (#6)[https://github.com/skatcat31/hilton_assessment/pull/6]**
 
 3. Some of the tests directly interacted with State. While many of the tests were good, why did these ones interact with the state instead of focusing on the DOM?  
 Because the DOM should be decided from the State I thought it would be a good place to test the mirroring that DOM updates State correctly, however this strictly ties the State into the test and if implimentation changes would quickly break that test. This would normally lead to an issue and then Pull Request to update the test. It is extremely helpful critique of how little things in testing can sometimes go unnoticed.

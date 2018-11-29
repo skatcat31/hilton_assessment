@@ -49,13 +49,15 @@ article strong {
 }
 
 article img:first-child {
-  max-width: 92.8vw;
+  max-height: 29.6%;
+  max-width: calc(100% - 3rem);
+  min-height: 142px;
   margin-left: 1.2rem;
   margin-bottom: 13.5px;
   border: 3px solid white;
 }
 
-@media (max-width:605px) {
+@media (max-height:480px) {
   article img:first-child {
     max-height: 142px;
     width: 273px;
